@@ -7,12 +7,14 @@ export interface LogTransport {
 
 class ConsoleTransport implements LogTransport {
   log(level: LogLevel, message: string, meta?: LogMeta): void {
-    const consoleMethod =
-      level === 'info'
-        ? console.info
-        : level === 'warn'
-          ? console.warn
-          : console.error;
+    let consoleMethod = console.info;
+
+    if (level === 'warn') {
+      consoleMethod = console.warn;
+    } else if (level === 'error') {
+      consoleMethod = console.error;
+    }
+
     consoleMethod(`[${level.toUpperCase()}] ${message}`, meta ?? '');
   }
 }

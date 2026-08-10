@@ -6,7 +6,7 @@
       "make": "Toyota",
       "model": "Camry",
       "year": 2023,
-      "inventoryDate": "2026-07-31",
+      "inventoryDate": "2026-07-31T00:00:00Z",
       "price": 28500,
       "status": null,
       "note": null
@@ -17,7 +17,7 @@
       "make": "Honda",
       "model": "Civic",
       "year": 2022,
-      "inventoryDate": "2026-06-26",
+      "inventoryDate": "2026-06-26T00:00:00Z",
       "price": 24900,
       "status": null,
       "note": null
@@ -28,7 +28,7 @@
       "make": "Mazda",
       "model": "CX-5",
       "year": 2023,
-      "inventoryDate": "2026-05-13",
+      "inventoryDate": "2026-05-13T00:00:00Z",
       "price": 31200,
       "status": null,
       "note": null
@@ -39,7 +39,7 @@
       "make": "Toyota",
       "model": "Corolla",
       "year": 2021,
-      "inventoryDate": "2026-05-12",
+      "inventoryDate": "2026-05-12T00:00:00Z",
       "price": 19800,
       "status": null,
       "note": null
@@ -50,7 +50,7 @@
       "make": "Ford",
       "model": "F-150",
       "year": 2022,
-      "inventoryDate": "2026-05-11",
+      "inventoryDate": "2026-05-11T00:00:00Z",
       "price": 42300,
       "status": "Price reduction planned",
       "note": "Reduced by $1,500 to move before quarter end"
@@ -61,7 +61,7 @@
       "make": "BMW",
       "model": "3 Series",
       "year": 2021,
-      "inventoryDate": "2026-04-12",
+      "inventoryDate": "2026-04-12T00:00:00Z",
       "price": 35600,
       "status": null,
       "note": null
@@ -72,7 +72,7 @@
       "make": "Chevrolet",
       "model": "Malibu",
       "year": 2020,
-      "inventoryDate": "2026-03-01",
+      "inventoryDate": "2026-03-01T00:00:00Z",
       "price": 21400,
       "status": "Featured in weekend promo",
       "note": "Listed on homepage banner starting this Saturday"
@@ -83,7 +83,7 @@
       "make": "Hyundai",
       "model": "Sonata",
       "year": 2021,
-      "inventoryDate": "2026-01-22",
+      "inventoryDate": "2026-01-22T00:00:00Z",
       "price": 22900,
       "status": null,
       "note": null
@@ -94,7 +94,7 @@
       "make": "Ford",
       "model": "Fusion",
       "year": 2019,
-      "inventoryDate": "2025-11-10",
+      "inventoryDate": "2025-11-10T00:00:00Z",
       "price": 17500,
       "status": "Price reduction planned",
       "note": "Second markdown scheduled; consider wholesale if unsold by month end"
@@ -105,7 +105,7 @@
       "make": "Kia",
       "model": "Sorento",
       "year": 2022,
-      "inventoryDate": "2026-08-01",
+      "inventoryDate": "2026-08-01T00:00:00Z",
       "price": 33700,
       "status": null,
       "note": null
@@ -116,7 +116,7 @@
       "make": "Nissan",
       "model": "Altima",
       "year": 2020,
-      "inventoryDate": "2026-06-15",
+      "inventoryDate": "2026-06-15T00:00:00Z",
       "price": 20100,
       "status": null,
       "note": null
@@ -127,10 +127,183 @@
       "make": "Subaru",
       "model": "Legacy",
       "year": 2021,
-      "inventoryDate": "2026-02-18",
+      "inventoryDate": "2026-02-18T00:00:00Z",
       "price": 23800,
       "status": null,
       "note": null
+    },
+    {
+      "id": "ad24bebf-de5f-4a7b-4c8d-9eafb0c1d2e3",
+      "vin": "2T1BURFE0JC012345",
+      "make": "Toyota",
+      "model": "RAV4",
+      "year": 2023,
+      "inventoryDate": "2026-07-20T00:00:00Z",
+      "price": 32100,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "be35cfc0-ef6a-4b8c-5d9e-afb0c1d2e3f4",
+      "vin": "1HGCV1F32MA012345",
+      "make": "Honda",
+      "model": "Accord",
+      "year": 2022,
+      "inventoryDate": "2026-06-10T00:00:00Z",
+      "price": 27600,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "cf46d0d1-fa7b-4c9d-6eaf-b0c1d2e3f4a5",
+      "vin": "1GTG6BE30F1012345",
+      "make": "Chevrolet",
+      "model": "Silverado",
+      "year": 2021,
+      "inventoryDate": "2026-04-05T00:00:00Z",
+      "price": 38900,
+      "status": "Price reduction planned",
+      "note": "Fleet discount available for bulk purchase"
+    },
+    {
+      "id": "d0a7e1e2-fb8c-4dae-7fb0-c1d2e3f4a5b6",
+      "vin": "1N4AA5AP9DC012345",
+      "make": "Nissan",
+      "model": "Rogue",
+      "year": 2023,
+      "inventoryDate": "2026-07-15T00:00:00Z",
+      "price": 29400,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "e1b8f2f3-0c9d-4eaf-8ac1-d2e3f4a5b6c7",
+      "vin": "3G5DA03E63S012345",
+      "make": "Chevrolet",
+      "model": "Equinox",
+      "year": 2022,
+      "inventoryDate": "2026-05-28T00:00:00Z",
+      "price": 26800,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "f2c9a3a4-1dae-4fb0-9bd2-e3f4a5b6c7d8",
+      "vin": "JH2RC4904MC012345",
+      "make": "Honda",
+      "model": "CR-V",
+      "year": 2021,
+      "inventoryDate": "2026-03-20T00:00:00Z",
+      "price": 28100,
+      "status": "Featured in weekend promo",
+      "note": "Popular crossover, high demand"
+    },
+    {
+      "id": "a3dab4b5-2ebf-4ac1-ace3-f4a5b6c7d8e9",
+      "vin": "4T3BF1FK0CU012345",
+      "make": "Toyota",
+      "model": "Highlander",
+      "year": 2023,
+      "inventoryDate": "2026-08-05T00:00:00Z",
+      "price": 42800,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "b4ebc5c6-3fca-4bd2-bdf4-a5b6c7d8e9fa",
+      "vin": "5FNYF4H79LB012345",
+      "make": "Honda",
+      "model": "Pilot",
+      "year": 2022,
+      "inventoryDate": "2026-06-12T00:00:00Z",
+      "price": 39200,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "c5fcd6d7-4adb-4ce3-ce5f-b6c7d8e9fa0b",
+      "vin": "1FTEX1E85FFC012345",
+      "make": "Ford",
+      "model": "Explorer",
+      "year": 2021,
+      "inventoryDate": "2026-05-22T00:00:00Z",
+      "price": 35400,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "d6adc7d8-5bee-4df4-df6a-c7d8e9fa0b1c",
+      "vin": "JF1GC5C24H9012345",
+      "make": "Subaru",
+      "model": "Forester",
+      "year": 2022,
+      "inventoryDate": "2026-04-30T00:00:00Z",
+      "price": 27900,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "e7bee8e9-6cff-4ea5-e07b-d8e9fa0b1c2d",
+      "vin": "KMHEC4A41FU012345",
+      "make": "Kia",
+      "model": "Sportage",
+      "year": 2023,
+      "inventoryDate": "2026-07-08T00:00:00Z",
+      "price": 30200,
+      "status": null,
+      "note": null
+    }
+  ],
+  "makers": [
+    {
+      "id": 1,
+      "name": "Toyota",
+      "models": ["Camry", "Corolla", "RAV4", "Highlander"]
+    },
+    {
+      "id": 2,
+      "name": "Honda",
+      "models": ["Civic", "Accord", "CR-V", "Pilot"]
+    },
+    {
+      "id": 3,
+      "name": "Ford",
+      "models": ["F-150", "Escape", "Explorer", "Mustang"]
+    },
+    {
+      "id": 4,
+      "name": "Chevrolet",
+      "models": ["Malibu", "Equinox", "Traverse", "Silverado"]
+    },
+    {
+      "id": 5,
+      "name": "Nissan",
+      "models": ["Altima", "Sentra", "Rogue", "Murano"]
+    },
+    {
+      "id": 6,
+      "name": "Subaru",
+      "models": ["Outback", "Legacy", "Forester", "Impreza"]
+    },
+    {
+      "id": 7,
+      "name": "Mazda",
+      "models": ["CX-5", "Mazda3", "Mazda6", "MX-5"]
+    },
+    {
+      "id": 8,
+      "name": "BMW",
+      "models": ["3 Series", "5 Series", "X3", "X5"]
+    },
+    {
+      "id": 9,
+      "name": "Hyundai",
+      "models": ["Sonata", "Elantra", "Santa Fe", "Tucson"]
+    },
+    {
+      "id": 10,
+      "name": "Kia",
+      "models": ["Sorento", "Sportage", "Forte", "Niro"]
     }
   ]
 }

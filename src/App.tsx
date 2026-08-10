@@ -2,13 +2,18 @@ import { Route, Routes } from 'react-router';
 
 import { ROUTES } from '@/constants/route';
 
+import { Toaster } from '@/components/common/toast/toast';
+
 import Dashboard from '@/pages/dashboard';
 
-function App() {  
+function App() {
   return (
-    <Routes>
-      <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
-    </Routes>
+    <>
+      <Toaster />
+      <Routes>
+        <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />
+      </Routes>
+    </>
   );
 }
 
