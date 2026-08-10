@@ -4,7 +4,7 @@ import { ROUTES } from '@/constants/route';
 
 import Dashboard from '@/pages/dashboard';
 
-function App() {
+function App() {  
   return (
     <Routes>
       <Route path={ROUTES.DASHBOARD} element={<Dashboard />} />

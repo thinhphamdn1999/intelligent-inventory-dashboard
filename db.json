@@ -1,0 +1,136 @@
+{
+  "vehicles": [
+    {
+      "id": "a1f2c3d4-1e2f-4a5b-8c6d-7e8f9a0b1c2d",
+      "vin": "1HGCM82633A004352",
+      "make": "Toyota",
+      "model": "Camry",
+      "year": 2023,
+      "inventoryDate": "2026-07-31",
+      "price": 28500,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "b2e3d4c5-2f3a-4b6c-9d7e-8f9a0b1c2d3e",
+      "vin": "2FMDK3GC4BBA12345",
+      "make": "Honda",
+      "model": "Civic",
+      "year": 2022,
+      "inventoryDate": "2026-06-26",
+      "price": 24900,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "c3f4e5d6-3a4b-4c7d-ae8f-9a0b1c2d3e4f",
+      "vin": "3VWFE21C04M000142",
+      "make": "Mazda",
+      "model": "CX-5",
+      "year": 2023,
+      "inventoryDate": "2026-05-13",
+      "price": 31200,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "d4a5f6e7-4b5c-4d8e-bf9a-0b1c2d3e4f5a",
+      "vin": "JH4KA7561PC008269",
+      "make": "Toyota",
+      "model": "Corolla",
+      "year": 2021,
+      "inventoryDate": "2026-05-12",
+      "price": 19800,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "e5b6a7f8-5c6d-4e9f-ca0b-1c2d3e4f5a6b",
+      "vin": "1FTFW1ET9BFA71234",
+      "make": "Ford",
+      "model": "F-150",
+      "year": 2022,
+      "inventoryDate": "2026-05-11",
+      "price": 42300,
+      "status": "Price reduction planned",
+      "note": "Reduced by $1,500 to move before quarter end"
+    },
+    {
+      "id": "f6c7b8a9-6d7e-4f0a-db1c-2d3e4f5a6b7c",
+      "vin": "WBA3A5C50CF251234",
+      "make": "BMW",
+      "model": "3 Series",
+      "year": 2021,
+      "inventoryDate": "2026-04-12",
+      "price": 35600,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "a7d8c9ba-7e8f-4a1b-ec2d-3e4f5a6b7c8d",
+      "vin": "1G1ZD5ST0LF012345",
+      "make": "Chevrolet",
+      "model": "Malibu",
+      "year": 2020,
+      "inventoryDate": "2026-03-01",
+      "price": 21400,
+      "status": "Featured in weekend promo",
+      "note": "Listed on homepage banner starting this Saturday"
+    },
+    {
+      "id": "b8e9daca-8f0a-4b2c-fd3e-4f5a6b7c8d9e",
+      "vin": "5NPE24AF4FH012345",
+      "make": "Hyundai",
+      "model": "Sonata",
+      "year": 2021,
+      "inventoryDate": "2026-01-22",
+      "price": 22900,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "c9f0eadb-9a1b-4c3d-0e4f-5a6b7c8d9eaf",
+      "vin": "3FA6P0H70ER012345",
+      "make": "Ford",
+      "model": "Fusion",
+      "year": 2019,
+      "inventoryDate": "2025-11-10",
+      "price": 17500,
+      "status": "Price reduction planned",
+      "note": "Second markdown scheduled; consider wholesale if unsold by month end"
+    },
+    {
+      "id": "daf1fbec-ab2c-4d4e-1f5a-6b7c8d9eafb0",
+      "vin": "KNDPBCAC5F7012345",
+      "make": "Kia",
+      "model": "Sorento",
+      "year": 2022,
+      "inventoryDate": "2026-08-01",
+      "price": 33700,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "eb02fcfd-bc3d-4e5f-2a6b-7c8d9eafb0c1",
+      "vin": "1N4AL3AP7DC012345",
+      "make": "Nissan",
+      "model": "Altima",
+      "year": 2020,
+      "inventoryDate": "2026-06-15",
+      "price": 20100,
+      "status": null,
+      "note": null
+    },
+    {
+      "id": "fc13adae-cd4e-4f6a-3b7c-8d9eafb0c1d2",
+      "vin": "4S3BMBG69C3012345",
+      "make": "Subaru",
+      "model": "Legacy",
+      "year": 2021,
+      "inventoryDate": "2026-02-18",
+      "price": 23800,
+      "status": null,
+      "note": null
+    }
+  ]
+}
