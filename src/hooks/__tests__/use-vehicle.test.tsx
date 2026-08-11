@@ -31,7 +31,6 @@ jest.mock('@/components/common/toast/toast', () => ({
   toast: { add: jest.fn() },
 }));
 
-
 function createWrapper() {
   const queryClient = createTestQueryClient();
   const invalidateSpy = jest.spyOn(queryClient, 'invalidateQueries');

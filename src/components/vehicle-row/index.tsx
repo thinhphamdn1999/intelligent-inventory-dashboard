@@ -69,7 +69,9 @@ const VehicleRow = ({ vehicle }: VehicleRowProps) => {
             <Button size="sm" variant="outline" onClick={handleLogStatus}>
               Log status
             </Button>
-          ): <p className='text-sm'>No action needed</p>}
+          ) : (
+            <p className="text-sm">No action needed</p>
+          )}
         </div>
       </div>
       {isModalOpen && (
