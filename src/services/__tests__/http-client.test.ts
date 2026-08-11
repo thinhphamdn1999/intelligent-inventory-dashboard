@@ -43,7 +43,9 @@ describe('HttpClient', () => {
 
       const calledUrl = (globalThis.fetch as jest.Mock).mock
         .calls[0][0] as string;
-      expect(calledUrl).toBe(`${ENV.API_BASE_URL}/vehicles?make=Toyota&_page=1`);
+      expect(calledUrl).toBe(
+        `${ENV.API_BASE_URL}/vehicles?make=Toyota&_page=1`,
+      );
     });
 
     it('skips undefined param values entirely', async () => {
@@ -63,7 +65,9 @@ describe('HttpClient', () => {
 
       const calledUrl = (globalThis.fetch as jest.Mock).mock
         .calls[0][0] as string;
-      expect(calledUrl).toBe(`${ENV.API_BASE_URL}/vehicles?make=Toyota&make=Honda`);
+      expect(calledUrl).toBe(
+        `${ENV.API_BASE_URL}/vehicles?make=Toyota&make=Honda`,
+      );
     });
   });
 
