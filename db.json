@@ -239,8 +239,8 @@
       "year": 2022,
       "inventoryDate": "2026-04-30T00:00:00Z",
       "price": 27900,
-      "status": null,
-      "note": null
+      "status": "Transfer to another dealership",
+      "note": ""
     },
     {
       "id": "e7bee8e9-6cff-4ea5-e07b-d8e9fa0b1c2d",
