@@ -28,3 +28,9 @@ export interface VehicleListResponse {
   items: number;
   data: Vehicle[];
 }
+
+export interface LogVehicleStatusInput {
+  id: string;
+  status: string;
+  note: string;
+}
