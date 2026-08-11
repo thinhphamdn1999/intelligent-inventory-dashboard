@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { ERROR_MESSAGE } from '@/constants/error-message';
+import { ERROR_MESSAGE } from '@/constants/message';
 import { DEFAULT_PAGE_NUMBER, DEFAULT_PAGE_SIZE } from '@/constants/pagination';
 
 import type { Maker } from '@/types/maker';
@@ -10,11 +10,13 @@ import VehicleHeader from '@/components/vehicle-header';
 import VehicleRow from '@/components/vehicle-row';
 import VehicleSkeleton from '@/components/vehicle-skeleton';
 import FilterSkeleton from '@/components/filter-skeleton';
+import VehiclePagination from '@/components/vehicle-pagination';
 import { toast } from '@/components/common/toast/toast';
 
 import { useMakers } from '@/hooks/use-maker';
 import { useVehicles } from '@/hooks/use-vehicle';
-import VehiclePagination from '@/components/vehicle-pagination';
+
+import logger from '@/services/logger';
 
 const Dashboard = () => {
   const [selectedMaker, setSelectedMaker] = useState<string>('');
@@ -66,6 +68,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (error) {
+      logger.error(ERROR_MESSAGE.FAILED_TO_FETCH_VEHICLES, {
+        error,
+      });
+
       toast.add({
         type: 'error',
         description: ERROR_MESSAGE.SOMETHING_WENT_WRONG,
@@ -75,6 +81,10 @@ const Dashboard = () => {
 
   useEffect(() => {
     if (makersError) {
+      logger.error(ERROR_MESSAGE.FAILED_TO_FETCH_MAKERS, {
+        error: makersError,
+      });
+
       toast.add({
         type: 'error',
         description: ERROR_MESSAGE.SOMETHING_WENT_WRONG,
@@ -103,7 +113,7 @@ const Dashboard = () => {
           <>
             {data?.data.length === 0 || !!error ? (
               <div className="flex justify-center items-center h-32 text-muted-foreground">
-                No vehicles found.
+                  No vehicles found.
               </div>
             ) : (
               <>

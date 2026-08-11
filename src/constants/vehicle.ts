@@ -14,6 +14,3 @@ export const VEHICLE_STATUS_OPTIONS = [
   { value: 'Wholesale under review', label: 'Wholesale under review' },
   { value: 'No action needed', label: 'No action needed' },
 ];
-
-export type VehicleStatusValue =
-  (typeof VEHICLE_STATUS_OPTIONS)[number]['value'];
