@@ -1,4 +1,3 @@
-// src/utils/__tests__/date.test.ts
 import { getDiffTime, formatDate } from '@/utils/date';
 
 describe('getDiffTime', () => {

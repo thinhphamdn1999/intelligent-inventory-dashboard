@@ -15,6 +15,7 @@ module.exports = {
     '!src/components/common/**',
     '!src/utils/test-utils/**',
     '!src/main.tsx',
+    '!src/App.tsx',
   ],
   coveragePathIgnorePatterns: [
     '/node_modules/',
