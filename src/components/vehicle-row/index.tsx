@@ -7,9 +7,9 @@ import type { Vehicle } from '@/types/vehicle';
 
 import { Badge } from '@/components/common/badge/badge';
 import { Button } from '@/components/common/button/button';
+import LogStatusModal from '@/components/log-status-modal';
 
 import { formatDate, getDiffTime } from '@/utils/date';
-import LogStatusModal from '../log-status-modal';
 
 interface VehicleRowProps {
   vehicle: Vehicle;

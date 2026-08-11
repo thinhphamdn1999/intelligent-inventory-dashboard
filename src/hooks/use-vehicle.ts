@@ -1,21 +1,25 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
+import { QUERY_KEYS } from '@/constants/query-key';
+import { ERROR_MESSAGE, MESSAGE } from '@/constants/message';
+import { ENDPOINT } from '@/constants/endpoint';
+
 import type {
   LogVehicleStatusInput,
   VehicleFilters,
   VehicleListResponse,
 } from '@/types/vehicle';
 
-import httpClient from '@/services/http-client';
 import { toast } from '@/components/common/toast/toast';
-import { ERROR_MESSAGE } from '@/constants/error-message';
-import { logger } from '@/services/logger';
+
+import httpClient from '@/services/http-client';
+import logger from '@/services/logger';
 
 export const useVehicles = (filters: VehicleFilters = {}) => {
   return useQuery({
-    queryKey: ['vehicles', filters],
+    queryKey: [QUERY_KEYS.VEHICLES, filters],
     queryFn: () =>
-      httpClient.get<VehicleListResponse>('/vehicles', {
+      httpClient.get<VehicleListResponse>(ENDPOINT.GET_LIST_VEHICLES, {
         make: filters.make,
         model: filters.model,
         _page: filters.page,
@@ -29,24 +33,24 @@ export const useLogVehicleStatus = () => {
 
   return useMutation({
     mutationFn: (data: LogVehicleStatusInput) => {
-      return httpClient.patch(`/vehicles/${data.id}`, {
+      return httpClient.patch(ENDPOINT.PATCH_VEHICLE(data.id), {
         status: data.status,
         note: data.note,
       });
     },
     onSuccess: (_, variables) => {
-      logger.info('Vehicle status updated', {
+      logger.info(MESSAGE.STATUS_UPDATED_SUCCESSFULLY, {
         vehicleId: variables.id,
         status: variables.status,
       });
-      queryClient.invalidateQueries({ queryKey: ['vehicles'] });
+      queryClient.invalidateQueries({ queryKey: [QUERY_KEYS.VEHICLES] });
       toast.add({
         type: 'success',
-        description: 'Status updated successfully',
+        description: MESSAGE.STATUS_UPDATED_SUCCESSFULLY,
       });
     },
     onError: (error, variables) => {
-      logger.error('Failed to update vehicle status', {
+      logger.error(ERROR_MESSAGE.FAILED_TO_UPDATE_VEHICLE_STATUS, {
         vehicleId: variables.id,
         error,
       });
