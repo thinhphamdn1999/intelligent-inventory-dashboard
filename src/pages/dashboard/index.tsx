@@ -93,47 +93,52 @@ const Dashboard = () => {
   }, [makersError]);
 
   return (
-    <section className="flex flex-col gap-1 m-3 sm:m-5">
-      {isMakersLoading ? (
-        <FilterSkeleton />
-      ) : (
-        <VehicleFilter
-          makers={makesData as Maker[]}
-          selectedMaker={selectedMaker}
-          selectedModel={selectedModel}
-          onMakerChange={handleMakerChange}
-          onModelChange={handleModelChange}
-          onClearFilters={handleClearFilters}
-        />
-      )}
-      <div>
-        {isLoading ? (
-          <VehicleSkeleton />
+    <div className="min-h-screen bg-background">
+      <header className="border-b border-border px-3 sm:px-5 py-4">
+        <h1 className="text-xl font-semibold">Inventory Dashboard</h1>
+      </header>
+      <section className="flex flex-col gap-1 m-3 sm:m-5">
+        {isMakersLoading ? (
+          <FilterSkeleton />
         ) : (
-          <>
-            {data?.data.length === 0 || !!error ? (
-              <div className="flex justify-center items-center h-32 text-muted-foreground">
-                  No vehicles found.
-              </div>
-            ) : (
-              <>
-                <VehicleHeader />
-                {data?.data.map((vehicle) => (
-                  <VehicleRow key={vehicle.id} vehicle={vehicle} />
-                ))}
-              </>
-            )}
-          </>
+          <VehicleFilter
+            makers={makesData as Maker[]}
+            selectedMaker={selectedMaker}
+            selectedModel={selectedModel}
+            onMakerChange={handleMakerChange}
+            onModelChange={handleModelChange}
+            onClearFilters={handleClearFilters}
+          />
         )}
-      </div>
-      {!isLoading && totalPages > 1 && (
-        <VehiclePagination
-          page={page}
-          totalPages={totalPages}
-          onPageChange={handlePageChange}
-        />
-      )}
-    </section>
+        <div>
+          {isLoading ? (
+            <VehicleSkeleton />
+          ) : (
+            <>
+              {data?.data.length === 0 || !!error ? (
+                <div className="flex justify-center items-center h-32 text-muted-foreground">
+                  No vehicles found.
+                </div>
+              ) : (
+                <>
+                  <VehicleHeader />
+                  {data?.data.map((vehicle) => (
+                    <VehicleRow key={vehicle.id} vehicle={vehicle} />
+                  ))}
+                </>
+              )}
+            </>
+          )}
+        </div>
+        {!isLoading && totalPages > 1 && (
+          <VehiclePagination
+            page={page}
+            totalPages={totalPages}
+            onPageChange={handlePageChange}
+          />
+        )}
+      </section>
+    </div>
   );
 };
 
