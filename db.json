@@ -8,8 +8,8 @@
       "year": 2023,
       "inventoryDate": "2026-07-31T00:00:00Z",
       "price": 28500,
-      "status": null,
-      "note": null
+      "status": "Transfer to another dealership",
+      "note": ""
     },
     {
       "id": "b2e3d4c5-2f3a-4b6c-9d7e-8f9a0b1c2d3e",
@@ -19,8 +19,8 @@
       "year": 2022,
       "inventoryDate": "2026-06-26T00:00:00Z",
       "price": 24900,
-      "status": null,
-      "note": null
+      "status": "Transfer to another dealership",
+      "note": ""
     },
     {
       "id": "c3f4e5d6-3a4b-4c7d-ae8f-9a0b1c2d3e4f",
@@ -41,8 +41,8 @@
       "year": 2021,
       "inventoryDate": "2026-05-12T00:00:00Z",
       "price": 19800,
-      "status": null,
-      "note": null
+      "status": "Featured in weekend promo",
+      "note": "Testing testing"
     },
     {
       "id": "e5b6a7f8-5c6d-4e9f-ca0b-1c2d3e4f5a6b",
@@ -52,7 +52,7 @@
       "year": 2022,
       "inventoryDate": "2026-05-11T00:00:00Z",
       "price": 42300,
-      "status": "Price reduction planned",
+      "status": "Additional marketing scheduled",
       "note": "Reduced by $1,500 to move before quarter end"
     },
     {
@@ -75,7 +75,7 @@
       "inventoryDate": "2026-03-01T00:00:00Z",
       "price": 21400,
       "status": "Featured in weekend promo",
-      "note": "Listed on homepage banner starting this Saturday"
+      "note": "123"
     },
     {
       "id": "b8e9daca-8f0a-4b2c-fd3e-4f5a6b7c8d9e",
@@ -96,8 +96,8 @@
       "year": 2019,
       "inventoryDate": "2025-11-10T00:00:00Z",
       "price": 17500,
-      "status": "Price reduction planned",
-      "note": "Second markdown scheduled; consider wholesale if unsold by month end"
+      "status": "No action needed",
+      "note": "1234"
     },
     {
       "id": "daf1fbec-ab2c-4d4e-1f5a-6b7c8d9eafb0",
@@ -256,54 +256,105 @@
   ],
   "makers": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Toyota",
-      "models": ["Camry", "Corolla", "RAV4", "Highlander"]
+      "models": [
+        "Camry",
+        "Corolla",
+        "RAV4",
+        "Highlander"
+      ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Honda",
-      "models": ["Civic", "Accord", "CR-V", "Pilot"]
+      "models": [
+        "Civic",
+        "Accord",
+        "CR-V",
+        "Pilot"
+      ]
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Ford",
-      "models": ["F-150", "Escape", "Explorer", "Mustang"]
+      "models": [
+        "F-150",
+        "Escape",
+        "Explorer",
+        "Mustang"
+      ]
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Chevrolet",
-      "models": ["Malibu", "Equinox", "Traverse", "Silverado"]
+      "models": [
+        "Malibu",
+        "Equinox",
+        "Traverse",
+        "Silverado"
+      ]
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Nissan",
-      "models": ["Altima", "Sentra", "Rogue", "Murano"]
+      "models": [
+        "Altima",
+        "Sentra",
+        "Rogue",
+        "Murano"
+      ]
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Subaru",
-      "models": ["Outback", "Legacy", "Forester", "Impreza"]
+      "models": [
+        "Outback",
+        "Legacy",
+        "Forester",
+        "Impreza"
+      ]
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Mazda",
-      "models": ["CX-5", "Mazda3", "Mazda6", "MX-5"]
+      "models": [
+        "CX-5",
+        "Mazda3",
+        "Mazda6",
+        "MX-5"
+      ]
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "BMW",
-      "models": ["3 Series", "5 Series", "X3", "X5"]
+      "models": [
+        "3 Series",
+        "5 Series",
+        "X3",
+        "X5"
+      ]
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Hyundai",
-      "models": ["Sonata", "Elantra", "Santa Fe", "Tucson"]
+      "models": [
+        "Sonata",
+        "Elantra",
+        "Santa Fe",
+        "Tucson"
+      ]
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Kia",
-      "models": ["Sorento", "Sportage", "Forte", "Niro"]
+      "models": [
+        "Sorento",
+        "Sportage",
+        "Forte",
+        "Niro"
+      ]
     }
-  ]
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
 }

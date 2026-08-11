@@ -1,4 +1,7 @@
 import { useEffect, useState } from 'react';
+
+import { ERROR_MESSAGE } from '@/constants/error-message';
+
 import type { Maker } from '@/types/maker';
 
 import VehicleFilter from '@/components/vehicle-filter';
@@ -6,12 +9,10 @@ import VehicleHeader from '@/components/vehicle-header';
 import VehicleRow from '@/components/vehicle-row';
 import VehicleSkeleton from '@/components/vehicle-skeleton';
 import FilterSkeleton from '@/components/filter-skeleton';
+import { toast } from '@/components/common/toast/toast';
 
 import { useMakers } from '@/hooks/use-maker';
 import { useVehicles } from '@/hooks/use-vehicle';
-
-import { toast } from '@/components/common/toast/toast';
-import { ERROR_MESSAGE } from '@/constants/error-message';
 
 const Dashboard = () => {
   const [selectedMaker, setSelectedMaker] = useState<string>('');
@@ -41,10 +42,6 @@ const Dashboard = () => {
   const handleClearFilters = () => {
     setSelectedMaker('');
     setSelectedModel('');
-  };
-
-  const handleLogStatus = (vehicleId: string) => {
-    console.log(`Log status for vehicle with ID: ${vehicleId}`);
   };
 
   useEffect(() => {
@@ -92,11 +89,7 @@ const Dashboard = () => {
               <>
                 <VehicleHeader />
                 {data?.data.map((vehicle) => (
-                  <VehicleRow
-                    key={vehicle.id}
-                    vehicle={vehicle}
-                    onLogStatus={handleLogStatus}
-                  />
+                  <VehicleRow key={vehicle.id} vehicle={vehicle} />
                 ))}
               </>
             )}

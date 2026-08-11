@@ -38,7 +38,7 @@ const SelectFilter = ({
         onValueChange={handleChange}
         disabled={disabled}
       >
-        <SelectTrigger className="w-full sm:w-45">
+        <SelectTrigger className="w-full sm:w-60">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
         <SelectContent>
