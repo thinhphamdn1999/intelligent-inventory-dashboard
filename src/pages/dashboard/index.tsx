@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import { ERROR_MESSAGE } from '@/constants/error-message';
+import { DEFAULT_PAGE_NUMBER, DEFAULT_PAGE_SIZE } from '@/constants/pagination';
 
 import type { Maker } from '@/types/maker';
 
@@ -13,16 +14,18 @@ import { toast } from '@/components/common/toast/toast';
 
 import { useMakers } from '@/hooks/use-maker';
 import { useVehicles } from '@/hooks/use-vehicle';
+import VehiclePagination from '@/components/vehicle-pagination';
 
 const Dashboard = () => {
   const [selectedMaker, setSelectedMaker] = useState<string>('');
   const [selectedModel, setSelectedModel] = useState<string>('');
+  const [page, setPage] = useState(DEFAULT_PAGE_NUMBER);
 
   const { data, isLoading, error } = useVehicles({
     make: selectedMaker || undefined,
     model: selectedModel || undefined,
-    page: 1,
-    limit: 10,
+    page,
+    limit: DEFAULT_PAGE_SIZE,
   });
   const {
     data: makesData,
@@ -30,18 +33,35 @@ const Dashboard = () => {
     error: makersError,
   } = useMakers();
 
+  const handleResetPage = () => {
+    setPage(DEFAULT_PAGE_NUMBER);
+  };
+
   const handleMakerChange = (value: string | null) => {
     setSelectedMaker(value || '');
-    setSelectedModel(''); // Reset model when maker changes
+
+    // Reset model when maker changes
+    setSelectedModel('');
+    handleResetPage();
   };
 
   const handleModelChange = (value: string | null) => {
     setSelectedModel(value || '');
+    handleResetPage();
   };
 
   const handleClearFilters = () => {
     setSelectedMaker('');
     setSelectedModel('');
+    handleResetPage();
+  };
+
+  const totalPages = data?.pages ?? 1;
+
+  const handlePageChange = (nextPage: number) => (event: React.MouseEvent) => {
+    event.preventDefault();
+    if (nextPage < 1 || nextPage > totalPages || nextPage === page) return;
+    setPage(nextPage);
   };
 
   useEffect(() => {
@@ -96,6 +116,13 @@ const Dashboard = () => {
           </>
         )}
       </div>
+      {!isLoading && totalPages > 1 && (
+        <VehiclePagination
+          page={page}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )}
     </section>
   );
 };
