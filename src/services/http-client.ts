@@ -1,7 +1,5 @@
 import { HTTP_ERROR_MESSAGE, HTTP_METHOD } from '@/constants/http';
 
-import { logger } from '@/services/logger';
-
 export class HttpError extends Error {
   public status: number;
   public body: unknown;
@@ -63,8 +61,7 @@ export class HttpClient {
         },
         body: body !== undefined ? JSON.stringify(body) : undefined,
       });
-    } catch (err) {
-      logger.error(HTTP_ERROR_MESSAGE.NETWORK_REQUEST_FAILED, { url, err });
+    } catch {
       throw new HttpError(HTTP_ERROR_MESSAGE.NETWORK_REQUEST_FAILED, 0);
     }
 
@@ -75,14 +72,6 @@ export class HttpClient {
       } catch {
         // Response had no JSON body
       }
-      logger.error(
-        HTTP_ERROR_MESSAGE.REQUEST_RETURNED_AN_ERROR_STATUS(response.status),
-        {
-          url,
-          status: response.status,
-          errorBody,
-        },
-      );
       throw new HttpError(
         HTTP_ERROR_MESSAGE.REQUEST_RETURNED_AN_ERROR_STATUS(response.status),
         response.status,

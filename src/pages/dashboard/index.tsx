@@ -101,7 +101,7 @@ const Dashboard = () => {
           <VehicleSkeleton />
         ) : (
           <>
-            {data?.data.length === 0 ? (
+            {data?.data.length === 0 || !!error ? (
               <div className="flex justify-center items-center h-32 text-muted-foreground">
                 No vehicles found.
               </div>
