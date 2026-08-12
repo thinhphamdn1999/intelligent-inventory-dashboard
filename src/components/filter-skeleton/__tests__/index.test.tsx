@@ -32,7 +32,9 @@ describe('FilterSkeleton', () => {
 
   it('renders label skeletons hidden on mobile', () => {
     const { container } = render(<FilterSkeleton />);
-    const labelSkeletons = container.querySelectorAll('[class*="hidden"][class*="sm:block"]');
+    const labelSkeletons = container.querySelectorAll(
+      '[class*="hidden"][class*="sm:block"]',
+    );
     expect(labelSkeletons.length).toBeGreaterThan(0);
   });
 });
