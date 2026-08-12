@@ -1,73 +1,105 @@
-# React + TypeScript + Vite
+# Intelligent Inventory Dashboard
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A frontend implementation of Keyloop's Scenario B technical assessment — a dealership inventory dashboard with filtering, aging-stock identification, and persisted status logging.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React v19** — component architecture
+- **react-router-dom** (Declarative mode) — routing; current build has a single dashboard route, kept in place for planned pages beyond this assessment
+- **shadcn/ui** — accessible, unstyled primitives composed with Tailwind
+- **TanStack Query** — data fetching, caching, and mutation state
+- **json-server** — mocked REST backend (filtering + pagination via `_page`/`_per_page`)
+- **Jest + React Testing Library** — unit and component tests
+- **web-vitals** — client-side Core Web Vitals collection (console-logged in this build)
 
-## React Compiler
+See the [System Design Document](https://docs.google.com/document/d/1IVJMEYD4v77cEuLp5nPtd1k__35XRN2s74hXcwKlCaA/edit?usp=sharing) for full architecture, data flow diagrams, and technology justifications.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
 
-## Expanding the ESLint configuration
+### Prerequisites
+- Node.js v22
+- npm
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+### Install
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Run
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+This app requires **two processes running at the same time**, in separate terminal tabs:
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+```bash
+# Terminal 1 — mock backend (http://localhost:3000)
+npm run server
+
+# Terminal 2 — frontend dev server
+npm run dev
 ```
+
+`db.json` is checked into the repo with example seed data, including two vehicles with pre-logged statuses, so the app has data to display immediately.
+
+### Build
+```bash
+npm run build
+```
+
+## Available Scripts
+
+| Script | Description |
+|---|---|
+| `npm run dev` | Start the Vite dev server |
+| `npm run server` | Start json-server on port 3000, watching `db.json` |
+| `npm run build` | Production build |
+| `npm test` | Run the test suite |
+| `npm run test:watch` | Run tests in watch mode |
+| `npm run test:coverage` | Run tests with a coverage report |
+
+## Testing
+
+```bash
+npm test
+```
+
+Tests focus on business logic and behavior rather than blanket coverage:
+
+- **Covered**: `getDiffTime`/`formatDate` date utilities (including the 90-day aging boundary), `HttpClient`, `Logger`, `useVehicles`/`useLogVehicleStatus`/`useMakers` hooks, `SelectFilter` and other composed components.
+- **Excluded from coverage**: `src/components/common/**` (shadcn/ui primitives — third-party, not app logic), `src/utils/test-utils/**` (test helpers themselves).
+
+## Assumptions & Scope Decisions
+
+A few requirement ambiguities were resolved with explicit decisions, documented in full in the design doc:
+
+- **Status logging** is shown only on aging vehicles (>90 days), matching the requirement's literal wording ("log and persist a status... for each aging vehicle").
+- **Vehicle detail** is a modal, not a routed page, to preserve the filtered list's scroll/filter context.
+- **Pagination** is implemented in the UI (not just documented) since shadcn/ui's built-in component made it low-effort once json-server's response envelope (`pages`, `items`) was confirmed to support it natively.
+- **Layout/page header** is scoped minimally for this single-route build; a shared `Layout` component would be introduced once a second page is added.
+- **Aging-stock date** is derived client-side via `getDiffTime(inventoryDate) > 90`, computed from a raw `inventoryDate` field rather than a stored, precomputed day-count.
+
+## AI Collaboration Narrative
+
+I made all the decisions, what to build, how to structure it, what to test. AI helped write the code once I'd already decided what I wanted.
+
+**How we split the work:**
+- I set up the project, picked the tools, and wrote the core pieces myself: the HTTP client, the logger, the date/aging logic, and the main data-fetching hooks.
+- For small, simple components (dropdowns, loading skeletons, badges), I let AI write the first draft.
+- For anything with real state to manage, like the filter bar, the main dashboard page, I wrote those myself, since they needed my own judgment on how the pieces fit together.
+- For tests: I set up the test tools and wrote a few example tests to show the pattern. AI then wrote the rest of the tests following that pattern, and I checked each one.
+
+**Times I caught AI getting something wrong:**
+- A form-reset bug triggered a React warning. AI's fix worked but was more complicated than needed. I found a simpler fix by restructuring where the modal's state lived.
+- A button was reloading the whole page when clicked. AI guessed wrong a few times (missing button type, hidden form). The real cause was completely different — the dev server was reloading the page because saving data changed a file it was watching. I found this myself by checking the browser's network log.
+- AI suggested removing a library (`react-router-dom`) since it looked unused. I kept it, because I have plans to add more pages later that AI didn't know about.
+
+**Things I double-checked myself instead of just trusting AI:**
+- Checked the real format of data coming back from the mock server, since AI assumed an older format.
+- Checked the official testing library docs directly before trusting AI's test setup, and caught a mistake in AI's config that it hadn't noticed.
+- Looked up whether a testing tool conflict was a known issue before switching approaches, instead of just guessing.
+
+**Overall:** some of these repeated exchanges took extra time compared to just accepting AI's first answer. But each one fixed a real problem instead of leaving a bug in place. The final code is more correct because of that extra checking, not despite it.
+
+## Known Limitations / Future Work
+
+- **Tracing** is not implemented — no distributed request path exists in this architecture to trace (see design doc's Observability section).
+- **Metrics reporting** is console-only in this build; a production version would forward Web Vitals to Sentry Performance or similar.
+- **No shared `Layout` component yet** — scoped out since this build has a single route, would be introduced alongside the second planned page.
