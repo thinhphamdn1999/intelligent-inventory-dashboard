@@ -1,4 +1,3 @@
-
 import { onLCP, onINP, onCLS } from 'web-vitals';
 
 import logger from '@/services/logger';

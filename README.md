@@ -17,10 +17,12 @@ See the [System Design Document](https://docs.google.com/document/d/1IVJMEYD4v77
 ## Getting Started
 
 ### Prerequisites
+
 - Node.js v22
 - npm
 
 ### Install
+
 ```bash
 npm install
 ```
@@ -50,20 +52,21 @@ npm run dev
 `db.json` is checked into the repo with example seed data, including two vehicles with pre-logged statuses, so the app has data to display immediately.
 
 ### Build
+
 ```bash
 npm run build
 ```
 
 ## Available Scripts
 
-| Script | Description |
-|---|---|
-| `npm run dev` | Start the Vite dev server |
-| `npm run server` | Start json-server on port 3000, watching `db.json` |
-| `npm run build` | Production build |
-| `npm test` | Run the test suite |
-| `npm run test:watch` | Run tests in watch mode |
-| `npm run test:coverage` | Run tests with a coverage report |
+| Script                  | Description                                        |
+| ----------------------- | -------------------------------------------------- |
+| `npm run dev`           | Start the Vite dev server                          |
+| `npm run server`        | Start json-server on port 3000, watching `db.json` |
+| `npm run build`         | Production build                                   |
+| `npm test`              | Run the test suite                                 |
+| `npm run test:watch`    | Run tests in watch mode                            |
+| `npm run test:coverage` | Run tests with a coverage report                   |
 
 ## Testing
 
@@ -91,17 +94,20 @@ A few requirement ambiguities were resolved with explicit decisions, documented 
 I made all the decisions, what to build, how to structure it, what to test. AI helped write the code once I'd already decided what I wanted.
 
 **How we split the work:**
+
 - I set up the project, picked the tools, and wrote the core pieces myself: the HTTP client, the logger, the date/aging logic, and the main data-fetching hooks.
 - For small, simple components (dropdowns, loading skeletons, badges), I let AI write the first draft.
 - For anything with real state to manage, like the filter bar, the main dashboard page, I wrote those myself, since they needed my own judgment on how the pieces fit together.
 - For tests: I set up the test tools and wrote a few example tests to show the pattern. AI then wrote the rest of the tests following that pattern, and I checked each one.
 
 **Times I caught AI getting something wrong:**
+
 - A form-reset bug triggered a React warning. AI's fix worked but was more complicated than needed. I found a simpler fix by restructuring where the modal's state lived.
 - A button was reloading the whole page when clicked. AI guessed wrong a few times (missing button type, hidden form). The real cause was completely different — the dev server was reloading the page because saving data changed a file it was watching. I found this myself by checking the browser's network log.
 - AI suggested removing a library (`react-router-dom`) since it looked unused. I kept it, because I have plans to add more pages later that AI didn't know about.
 
 **Things I double-checked myself instead of just trusting AI:**
+
 - Checked the real format of data coming back from the mock server, since AI assumed an older format.
 - Checked the official testing library docs directly before trusting AI's test setup, and caught a mistake in AI's config that it hadn't noticed.
 - Looked up whether a testing tool conflict was a known issue before switching approaches, instead of just guessing.
@@ -113,3 +119,4 @@ I made all the decisions, what to build, how to structure it, what to test. AI h
 - **Tracing** is not implemented — no distributed request path exists in this architecture to trace (see design doc's Observability section).
 - **Metrics reporting** is console-only in this build; a production version would forward Web Vitals to Sentry Performance or similar.
 - **No shared `Layout` component yet** — scoped out since this build has a single route, would be introduced alongside the second planned page.
+- **Aging-status filtering (In stock / Aging >90 days)** is not implemented as a server-side filter. json-server's `_gte`/`_lte` operators have a known, unresolved bug with date-string comparison ([typicode/json-server#1528](https://github.com/typicode/json-server/issues/1528)), making server-side date-range filtering unreliable against this mock backend. A production backend with proper date-typed columns would support this directly, implementing it here would mean working around a known bug in throwaway mock infrastructure rather than real backend logic.

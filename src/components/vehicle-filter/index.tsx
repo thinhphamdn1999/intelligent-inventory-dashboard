@@ -14,7 +14,7 @@ interface VehicleFilters {
   onClearFilters: () => void;
 }
 
-const   VehicleFilter = ({
+const VehicleFilter = ({
   makers,
   selectedModel,
   selectedMaker,
