@@ -5,9 +5,13 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
 import { QUERY_CONFIG } from '@/constants/query-config.ts';
 
+import { reportWebVitals } from '@/services/web-vitals.ts';
+
 import App from './App.tsx';
 
 import './index.css';
+
+reportWebVitals();
 
 const queryClient = new QueryClient({
   defaultOptions: {
