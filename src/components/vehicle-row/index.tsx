@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { memo, useState } from 'react';
 
 import { DATE_FORMAT } from '@/constants/date';
 import { AGING_STOCK_DAYS } from '@/constants/vehicle';
@@ -85,4 +85,4 @@ const VehicleRow = ({ vehicle }: VehicleRowProps) => {
   );
 };
 
-export default VehicleRow;
+export default memo(VehicleRow);

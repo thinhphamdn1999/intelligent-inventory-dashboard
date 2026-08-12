@@ -195,7 +195,7 @@
       "year": 2021,
       "inventoryDate": "2026-03-20T00:00:00Z",
       "price": 28100,
-      "status": "Featured in weekend promo",
+      "status": "Transfer to another dealership",
       "note": "Popular crossover, high demand"
     },
     {
@@ -239,8 +239,8 @@
       "year": 2022,
       "inventoryDate": "2026-04-30T00:00:00Z",
       "price": 27900,
-      "status": "Transfer to another dealership",
-      "note": ""
+      "status": "Price reduction planned",
+      "note": "ABC"
     },
     {
       "id": "e7bee8e9-6cff-4ea5-e07b-d8e9fa0b1c2d",
@@ -258,52 +258,102 @@
     {
       "id": "1",
       "name": "Toyota",
-      "models": ["Camry", "Corolla", "RAV4", "Highlander"]
+      "models": [
+        "Camry",
+        "Corolla",
+        "RAV4",
+        "Highlander"
+      ]
     },
     {
       "id": "2",
       "name": "Honda",
-      "models": ["Civic", "Accord", "CR-V", "Pilot"]
+      "models": [
+        "Civic",
+        "Accord",
+        "CR-V",
+        "Pilot"
+      ]
     },
     {
       "id": "3",
       "name": "Ford",
-      "models": ["F-150", "Escape", "Explorer", "Mustang"]
+      "models": [
+        "F-150",
+        "Escape",
+        "Explorer",
+        "Mustang"
+      ]
     },
     {
       "id": "4",
       "name": "Chevrolet",
-      "models": ["Malibu", "Equinox", "Traverse", "Silverado"]
+      "models": [
+        "Malibu",
+        "Equinox",
+        "Traverse",
+        "Silverado"
+      ]
     },
     {
       "id": "5",
       "name": "Nissan",
-      "models": ["Altima", "Sentra", "Rogue", "Murano"]
+      "models": [
+        "Altima",
+        "Sentra",
+        "Rogue",
+        "Murano"
+      ]
     },
     {
       "id": "6",
       "name": "Subaru",
-      "models": ["Outback", "Legacy", "Forester", "Impreza"]
+      "models": [
+        "Outback",
+        "Legacy",
+        "Forester",
+        "Impreza"
+      ]
     },
     {
       "id": "7",
       "name": "Mazda",
-      "models": ["CX-5", "Mazda3", "Mazda6", "MX-5"]
+      "models": [
+        "CX-5",
+        "Mazda3",
+        "Mazda6",
+        "MX-5"
+      ]
     },
     {
       "id": "8",
       "name": "BMW",
-      "models": ["3 Series", "5 Series", "X3", "X5"]
+      "models": [
+        "3 Series",
+        "5 Series",
+        "X3",
+        "X5"
+      ]
     },
     {
       "id": "9",
       "name": "Hyundai",
-      "models": ["Sonata", "Elantra", "Santa Fe", "Tucson"]
+      "models": [
+        "Sonata",
+        "Elantra",
+        "Santa Fe",
+        "Tucson"
+      ]
     },
     {
       "id": "10",
       "name": "Kia",
-      "models": ["Sorento", "Sportage", "Forte", "Niro"]
+      "models": [
+        "Sorento",
+        "Sportage",
+        "Forte",
+        "Niro"
+      ]
     }
   ],
   "$schema": "./node_modules/json-server/schema.json"

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { ERROR_MESSAGE } from '@/constants/message';
 import { DEFAULT_PAGE_NUMBER, DEFAULT_PAGE_SIZE } from '@/constants/pagination';
@@ -39,32 +39,34 @@ const Dashboard = () => {
     setPage(DEFAULT_PAGE_NUMBER);
   };
 
-  const handleMakerChange = (value: string | null) => {
+  const handleMakerChange = useCallback((value: string | null) => {
     setSelectedMaker(value || '');
 
     // Reset model when maker changes
     setSelectedModel('');
     handleResetPage();
-  };
+  }, []);
 
-  const handleModelChange = (value: string | null) => {
+  const handleModelChange = useCallback((value: string | null) => {
     setSelectedModel(value || '');
     handleResetPage();
-  };
+  }, []);
 
-  const handleClearFilters = () => {
+  const handleClearFilters = useCallback(() => {
     setSelectedMaker('');
     setSelectedModel('');
     handleResetPage();
-  };
+  }, []);
 
   const totalPages = data?.pages ?? 1;
 
-  const handlePageChange = (nextPage: number) => (event: React.MouseEvent) => {
-    event.preventDefault();
-    if (nextPage < 1 || nextPage > totalPages || nextPage === page) return;
-    setPage(nextPage);
-  };
+  const handlePageChange = useCallback(
+    (nextPage: number) => {
+      if (nextPage < 1 || nextPage > totalPages || nextPage === page) return;
+      setPage(nextPage);
+    },
+    [totalPages, page],
+  );
 
   useEffect(() => {
     if (error) {

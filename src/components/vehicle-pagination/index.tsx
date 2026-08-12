@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import {
   Pagination,
   PaginationContent,
@@ -10,7 +12,7 @@ import {
 interface VehiclePaginationProps {
   page: number;
   totalPages: number;
-  onPageChange: (page: number) => (event: React.MouseEvent) => void;
+  onPageChange: (page: number) => void;
 }
 
 const VehiclePagination = ({
@@ -18,13 +20,18 @@ const VehiclePagination = ({
   totalPages,
   onPageChange,
 }: VehiclePaginationProps) => {
+  const handleClick = (targetPage: number) => (event: React.MouseEvent) => {
+    event.preventDefault();
+    onPageChange(targetPage);
+  };
+
   return (
     <Pagination className="mt-4">
       <PaginationContent>
         <PaginationItem>
           <PaginationPrevious
             href="#"
-            onClick={onPageChange(page - 1)}
+            onClick={handleClick(page - 1)}
             aria-disabled={page === 1}
             className={page === 1 ? 'pointer-events-none opacity-50' : ''}
           />
@@ -35,7 +42,7 @@ const VehiclePagination = ({
             <PaginationLink
               href="#"
               isActive={p === page}
-              onClick={onPageChange(p)}
+              onClick={handleClick(p)}
             >
               {p}
             </PaginationLink>
@@ -45,7 +52,7 @@ const VehiclePagination = ({
         <PaginationItem>
           <PaginationNext
             href="#"
-            onClick={onPageChange(page + 1)}
+            onClick={handleClick(page + 1)}
             aria-disabled={page === totalPages}
             className={
               page === totalPages ? 'pointer-events-none opacity-50' : ''
@@ -57,4 +64,4 @@ const VehiclePagination = ({
   );
 };
 
-export default VehiclePagination;
+export default memo(VehiclePagination);
