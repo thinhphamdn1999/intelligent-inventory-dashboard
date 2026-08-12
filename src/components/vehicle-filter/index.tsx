@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { memo, useMemo } from 'react';
 
 import type { Maker } from '@/types/maker';
 
@@ -14,7 +14,7 @@ interface VehicleFilters {
   onClearFilters: () => void;
 }
 
-const VehicleFilter = ({
+const   VehicleFilter = ({
   makers,
   selectedModel,
   selectedMaker,
@@ -74,4 +74,4 @@ const VehicleFilter = ({
   );
 };
 
-export default VehicleFilter;
+export default memo(VehicleFilter);

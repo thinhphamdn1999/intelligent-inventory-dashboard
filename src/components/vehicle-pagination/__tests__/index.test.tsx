@@ -4,8 +4,7 @@ import userEvent from '@testing-library/user-event';
 import VehiclePagination from '@/components/vehicle-pagination';
 
 describe('VehiclePagination', () => {
-  const mockClickHandler = jest.fn();
-  const mockOnPageChange = jest.fn(() => mockClickHandler);
+  const mockOnPageChange = jest.fn();
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -115,8 +114,8 @@ describe('VehiclePagination', () => {
 
     await user.click(screen.getByRole('button', { name: '2' }));
 
+    expect(mockOnPageChange).toHaveBeenCalledTimes(1);
     expect(mockOnPageChange).toHaveBeenCalledWith(2);
-    expect(mockClickHandler).toHaveBeenCalledTimes(1);
   });
 
   it('invokes onPageChange with previous page when clicking previous button', async () => {
@@ -134,8 +133,8 @@ describe('VehiclePagination', () => {
       screen.getByRole('button', { name: /go to previous page/i }),
     );
 
+    expect(mockOnPageChange).toHaveBeenCalledTimes(1);
     expect(mockOnPageChange).toHaveBeenCalledWith(1);
-    expect(mockClickHandler).toHaveBeenCalledTimes(1);
   });
 
   it('invokes onPageChange with next page when clicking next button', async () => {
@@ -151,7 +150,7 @@ describe('VehiclePagination', () => {
 
     await user.click(screen.getByRole('button', { name: /go to next page/i }));
 
+    expect(mockOnPageChange).toHaveBeenCalledTimes(1);
     expect(mockOnPageChange).toHaveBeenCalledWith(3);
-    expect(mockClickHandler).toHaveBeenCalledTimes(1);
   });
 });
