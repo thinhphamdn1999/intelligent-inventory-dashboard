@@ -25,6 +25,16 @@ See the [System Design Document](https://docs.google.com/document/d/1IVJMEYD4v77
 npm install
 ```
 
+### Environment Setup
+
+Create a `.env.local` file in the project root:
+
+```dotenv
+VITE_API_URL=http://localhost:3000/
+```
+
+> **Note:** In a real-world project, environment values are typically treated as secrets and kept out of version control/documentation. Since this value is just a local mock server URL with no actual sensitive data, it's included directly here for setup convenience — this wouldn't be appropriate practice for real credentials or production URLs.
+
 ### Run
 
 This app requires **two processes running at the same time**, in separate terminal tabs:
