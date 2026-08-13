@@ -153,4 +153,78 @@ describe('VehiclePagination', () => {
     expect(mockOnPageChange).toHaveBeenCalledTimes(1);
     expect(mockOnPageChange).toHaveBeenCalledWith(3);
   });
+
+  it('shows right ellipsis when near start (e.g. page 2 of 20)', () => {
+    render(
+      <VehiclePagination
+        page={2}
+        totalPages={20}
+        onPageChange={mockOnPageChange}
+      />,
+    );
+
+    // Pages 1, 2, 3, 4, and 20 should be visible
+    expect(screen.getByRole('button', { name: '1' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '2' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '3' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '4' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '20' })).toBeInTheDocument();
+
+    // Intermediate pages should not be visible
+    expect(screen.queryByRole('button', { name: '5' })).not.toBeInTheDocument();
+
+    // Exactly one ellipsis should render
+    expect(screen.getAllByText(/more pages/i)).toHaveLength(1);
+  });
+
+  it('shows left and right ellipsis when in the middle (e.g. page 10 of 20)', () => {
+    render(
+      <VehiclePagination
+        page={10}
+        totalPages={20}
+        onPageChange={mockOnPageChange}
+      />,
+    );
+
+    // Page 1, surrounding pages (9, 10, 11), and page 20 should be visible
+    expect(screen.getByRole('button', { name: '1' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '9' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '10' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '11' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '20' })).toBeInTheDocument();
+
+    // Pages outside middle window shouldn't render
+    expect(screen.queryByRole('button', { name: '2' })).not.toBeInTheDocument();
+    expect(
+      screen.queryByRole('button', { name: '12' }),
+    ).not.toBeInTheDocument();
+
+    // Two ellipses should render (left and right)
+    expect(screen.getAllByText(/more pages/i)).toHaveLength(2);
+  });
+
+  it('shows left ellipsis when near the end (e.g. page 19 of 20)', () => {
+    render(
+      <VehiclePagination
+        page={19}
+        totalPages={20}
+        onPageChange={mockOnPageChange}
+      />,
+    );
+
+    // Page 1 and last 4 pages (17, 18, 19, 20) should be visible
+    expect(screen.getByRole('button', { name: '1' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '17' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '18' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '19' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: '20' })).toBeInTheDocument();
+
+    // Middle pages should not be visible
+    expect(
+      screen.queryByRole('button', { name: '16' }),
+    ).not.toBeInTheDocument();
+
+    // Exactly one ellipsis should render
+    expect(screen.getAllByText(/more pages/i)).toHaveLength(1);
+  });
 });
