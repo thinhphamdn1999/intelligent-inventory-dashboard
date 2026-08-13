@@ -120,3 +120,10 @@ I made all the decisions, what to build, how to structure it, what to test. AI h
 - **Metrics reporting** is console-only in this build; a production version would forward Web Vitals to Sentry Performance or similar.
 - **No shared `Layout` component yet** — scoped out since this build has a single route, would be introduced alongside the second planned page.
 - **Aging-status filtering (In stock / Aging >90 days)** is not implemented as a server-side filter. json-server's `_gte`/`_lte` operators have a known, unresolved bug with date-string comparison ([typicode/json-server#1528](https://github.com/typicode/json-server/issues/1528)), making server-side date-range filtering unreliable against this mock backend. A production backend with proper date-typed columns would support this directly, implementing it here would mean working around a known bug in throwaway mock infrastructure rather than real backend logic.
+
+## References
+
+- **[System Design Document](https://docs.google.com/document/d/1IVJMEYD4v77cEuLp5nPtd1k__35XRN2s74hXcwKlCaA/edit?usp=drive_link)** — architecture, data flow diagrams, and technology decisions
+- **[Presentation Slides](https://docs.google.com/presentation/d/19LPPMXXnLhOhvuqtn3KCcbmxmf7-6sq2YTs7N63leqQ/edit?usp=drive_link)** — technical assessment overview and design summary
+- **[Video Walkthrough](https://drive.google.com/file/d/1TdNb1xaHCwGfYKAUwrhxp_hzMlXmwKW_/view?usp=drive_link)** — walkthrough of the implemented dashboard
+- **[Google Drive Folder](https://drive.google.com/drive/folders/175ElKEOg7STbhT4DVD_e8IJ3HqZyZ0OO?usp=drive_link)** — all supporting project materials
