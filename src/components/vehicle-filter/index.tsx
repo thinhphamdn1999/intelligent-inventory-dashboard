@@ -66,6 +66,7 @@ const VehicleFilter = ({
         variant="outline"
         size="sm"
         onClick={onClearFilters}
+        disabled={!selectedMaker && !selectedModel}
         className="w-full sm:w-auto"
       >
         Clear Filters

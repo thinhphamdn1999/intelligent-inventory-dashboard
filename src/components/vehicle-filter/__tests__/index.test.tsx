@@ -130,4 +130,34 @@ describe('VehicleFilter', () => {
     expect(makerSelect).toBeEnabled();
     expect(modelSelect).toBeDisabled();
   });
+
+  it('disables the clear filters button when no filters are selected', () => {
+    render(<VehicleFilter {...defaultProps} />);
+
+    expect(
+      screen.getByRole('button', { name: /clear filters/i }),
+    ).toBeDisabled();
+  });
+
+  it('enables the clear filters button when a maker is selected', () => {
+    render(<VehicleFilter {...defaultProps} selectedMaker="Toyota" />);
+
+    expect(
+      screen.getByRole('button', { name: /clear filters/i }),
+    ).toBeEnabled();
+  });
+
+  it('enables the clear filters button when a model is selected', () => {
+    render(
+      <VehicleFilter
+        {...defaultProps}
+        selectedMaker="Toyota"
+        selectedModel="Camry"
+      />,
+    );
+
+    expect(
+      screen.getByRole('button', { name: /clear filters/i }),
+    ).toBeEnabled();
+  });
 });
